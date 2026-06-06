@@ -43,30 +43,31 @@ int main()
         printf("Ingrese su opción: ");
         scanf(" %c", &opcion);
 
-        switch (opcion) {
-        case '1':
-          
-          break;
-        case '2':
-          
-          break;
-        case '3':
-          
-          break;
-        case '4':
+        switch (opcion) 
+        {
+            case '1':
             
-            break;
-        
+                break;
+            case '2':
+            
+                break;
+            case '3':
+            
+                break;
+            case '4':
+                
+                break;
+        }
 
-        
+            
         if (opcion != '5') 
         {
             printf("\n");
             presioneTeclaParaContinuar();
             limpiarPantalla();
         }
-
-  } while (opcion != '5');
+        
+    } while (opcion != '5');
 
   return 0;
 
