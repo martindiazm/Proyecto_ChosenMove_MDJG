@@ -40,7 +40,7 @@ int main()
         puts("4) Mostrar red de transporte");
         puts("5) Salir");
 
-        printf("Ingrese su opción: ");
+        printf("Ingrese su opcion: ");
         scanf(" %c", &opcion);
 
         switch (opcion) 
