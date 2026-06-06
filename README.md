@@ -11,10 +11,10 @@ Y luego ejecutar:
 ````
 Para Realizar Cambios y Commits en Git Bash:
 ````
-git add .                 # Añade todos los cambios al área de preparación.
+git add .                 
 ````
 ````
-git commit -m "Mensaje"   # Realiza un commit con un mensaje descriptivo.
+git commit -m "Mensaje"   
 ````
 Para Enviar Cambios a GitHub:
 ````
