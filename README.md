@@ -20,3 +20,8 @@ Para Enviar Cambios a GitHub:
 ````
 git push origin main
 ````
+Para agregar los cambios realizados por otros 
+````
+git pull
+````
+Si les sale un mensaje en inglés, presionan la tecla "Esc" y escriben ":wq" xd
