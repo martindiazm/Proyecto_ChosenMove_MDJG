@@ -41,8 +41,16 @@ typedef struct {
 
 red* crearRed(int capacidad_maxima);
 
+//Funciones con respecto a lugares
+
 void agregarLugar(red* r, char* nombre);
+void eliminarLugar(red *r, char* nombre);
+void mostrarLugares(red *r, char* nombre);
+
+//Funciones con respecto a las conexiones
+
 void agregarConexion(red* r, char* origen, char* destino, int tiempo, int costo, int num_transporte, char* nom_transporte);
+void eliminarConexion(red* r, char* origen, char* destino, int tiempo, int costo, int num_transporte, char* nom_transporte);
 
 
 
