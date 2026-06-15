@@ -2,7 +2,7 @@
 
 Para ejecutar el código primero debemos compilar en PowerShell 
 ````
-gcc main.c tdas/*.c -o programa.exe
+gcc main.c funciones.c tdas/*.c -o programa.exe
 ````
 
 Y luego ejecutar:

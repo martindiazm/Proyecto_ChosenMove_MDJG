@@ -1,44 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "tdas/list.h"
-#include "tdas/heap.h"
-#include "tdas/extra.h"
-#include "tdas/stack.h"
-#include "tdas/queue.h"
-#include "tdas/map.h"
-#include <string.h>
-#include <time.h>
-
-// Definición de los structs 
-
-typedef struct
-{
-    int numero;
-    char nombre[20];
-} tipoTransporte; 
-
-
-typedef struct
-{
-    char origen[30];
-    int tiempo;
-    int costo;
-    tipoTransporte transporte;
-} conexion;
-
-typedef struct
-{
-    char nombre[30];
-    List* conexiones;
-} lugar;
-
-typedef struct
-{
-    Map* lugares;
-    int cantidad_actual; 
-    int capacidad_maxima;
-} red;
-
+#include "funciones.h"
 
 // Definición de las funciones 
 
