@@ -39,6 +39,8 @@ typedef struct {
 
 //Funciones
 
+//Creación del mapa
+
 red* crearRed(int capacidad_maxima);
 
 //Funciones con respecto a lugares
@@ -52,6 +54,10 @@ void mostrarLugares(red *r, char* nombre);
 void agregarConexion(red* r, char* origen, char* destino, int tiempo, int costo, int num_transporte, char* nom_transporte);
 void eliminarConexion(red* r, char* origen, char* destino, int tiempo, int costo, int num_transporte, char* nom_transporte);
 
+//Busquedas por filtros
 
+void busquedaRapidez(red* r, char* origen, char* destino, int tiempo, int costo, int num_transporte, char* nom_transporte);
+void busquedaEconomica (red* r, char* origen, char* destino, int tiempo, int costo, int num_transporte, char* nom_transporte);
+void busquedaMixta (red* r, char* origen, char* destino, int tiempo, int costo, int num_transporte, char* nom_transporte);
 
 #endif
