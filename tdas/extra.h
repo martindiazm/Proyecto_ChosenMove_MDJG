@@ -13,6 +13,6 @@ void limpiarPantalla();
 
 void presioneTeclaParaContinuar();
 
-
+int is_equal_string(void* a, void* b);
 
 #endif

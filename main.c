@@ -58,8 +58,14 @@ Eliminar conexión: El usuario escribe 2. El programa solicita el nombre del lug
 
 
 
-int main()
-{
+int main(){
+
+    red* red_caminando=crearRed(100);
+    red* red_metro=crearRed(100);
+    red* red_micro=crearRed(100);
+    red* red_colectivo=crearRed(100);
+
+
     char opcion;
     do 
     {
@@ -132,16 +138,50 @@ int main()
                     printf("Ingrese su opcion: ");
                     scanf(" %c", &opcion3);
 
-                    switch (opcion3) 
-                    {
+                    switch (opcion3){
                         case '1':
+                            char nombre[30];
+                            printf("Ingrese nombre del lugar: ");
+                            scanf(" %29s", nombre);
 
+                            // Preguntar a qué red(es) agregar
+                             char opcionRed;
+                             puts("¿En qué red desea agregar el lugar?");
+                             puts("1) Caminando");
+                             puts("2) Metro");
+                             puts("3) Micro");
+                             puts("4) Colectivo");
+                             printf("Ingrese su opcion: ");
+                             scanf(" %c", &opcionRed);
+
+                            switch (opcionRed) {
+                                case '1':
+                                    agregarLugar(red_caminando, nombre);
+                                    break;
+                                
+                                case '2':
+                                    agregarLugar(red_metro, nombre);
+                                    break;
+                                
+                                case '3':
+                                    agregarLugar(red_micro, nombre);
+                                    break;
+                                
+                                case '4':
+                                    agregarLugar(red_colectivo, nombre);
+                                    break;
+                                
+                                default:
+                                    puts("Opcion invalida");
+                                    break;
+                            }
+                            puts("Lugar agregado exitosamente");
                             break;
                         case '2':
-
+                            //Eliminar
                             break;
                         case '3':
-
+                            //Mostrar lista
                             break;
                     }
                     if (opcion3 != '4') 
@@ -168,13 +208,55 @@ int main()
                     printf("Ingrese su opcion: ");
                     scanf(" %c", &opcion4);
 
-                    switch (opcion4) 
-                    {
+                    switch (opcion4){
                         case '1':
+                            char origen[30];
+                            char destino[30];
+                            int tiempo;
+                            int costo;
+                            printf("Lugar de origen: ");
+                            scanf(" %29s", origen);
+                            printf("Lugar de destino: ");
+                            scanf(" %29s", destino);
+                            printf("Tiempo (minutos): ");
+                            scanf("%d", &tiempo);
+                            printf("Costo: ");
+                            scanf("%d", &costo);
 
+                            char opcionRed;
+                            puts("Tipo de transporte:");
+                            puts("1) Caminando");
+                            puts("2) Metro");
+                            puts("3) Micro");
+                            puts("4) Colectivo");
+                            printf("Ingrese su opcion: ");
+                            scanf(" %c", &opcionRed);
+
+                            switch (opcionRed) {
+                                case '1':
+                                    agregarConexion(red_caminando, origen, destino, tiempo, costo, 1, "Caminando");
+                                    break;
+                                
+                                case '2':
+                                    agregarConexion(red_metro, origen, destino, tiempo, costo, 2, "Metro");
+                                    break;
+                                
+                                case '3':
+                                    agregarConexion(red_micro, origen, destino, tiempo, costo, 3, "Micro");
+                                    break;
+                                
+                                case '4':
+                                    agregarConexion(red_colectivo, origen, destino, tiempo, costo, 4, "Colectivo");
+                                    break;
+                                
+                                default:
+                                    puts("Opcion invalida");
+                                    break;
+                            }
+                            puts("Conexion agregada exitosamente");
                             break;
                         case '2':
-
+                            //Eliminar
                             break;
     
                     }

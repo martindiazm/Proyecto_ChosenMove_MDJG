@@ -37,7 +37,12 @@ typedef struct {
     int capacidad_maxima;
 } red;
 
-//Firma Funciones abajo
+//Funciones
+
+red* crearRed(int capacidad_maxima);
+
+void agregarLugar(red* r, char* nombre);
+void agregarConexion(red* r, char* origen, char* destino, int tiempo, int costo, int num_transporte, char* nom_transporte);
 
 
 

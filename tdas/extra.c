@@ -18,3 +18,7 @@ void presioneTeclaParaContinuar() {
   getchar(); // Espera a que el usuario presione una tecla
 }
 
+
+int is_equal_string(void* a, void* b){
+    return strcmp((char*)a, (char*)b)==0;
+}
