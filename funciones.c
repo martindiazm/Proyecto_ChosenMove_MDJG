@@ -49,7 +49,10 @@ void eliminarConexion(red* r, char* origen, char* destino)
 {
     lugar* l_origen=(lugar*)map_search(r->lugares, origen);
 
-    if(l_origen==NULL)return;
+    if(l_origen == NULL)
+    {
+        return;
+    }
 
     conexion * c = list_first(l_origen->conexiones);
 
@@ -57,9 +60,9 @@ void eliminarConexion(red* r, char* origen, char* destino)
     {
             if (strcmp(c->origen, destino) == 0)
             {
-                list_removeCurrent(l_origen->conexiones);
+                conexion* eliminada = list_popCurrent(l_origen->conexiones);
                 
-                free(c);
+                free(eliminada);
 
                 return;
             }
