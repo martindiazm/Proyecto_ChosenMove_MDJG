@@ -52,7 +52,7 @@ void mostrarLugares(red *r, char* nombre);
 //Funciones con respecto a las conexiones
 
 void agregarConexion(red* r, char* origen, char* destino, int tiempo, int costo, int num_transporte, char* nom_transporte);
-void eliminarConexion(red* r, char* origen, char* destino, int tiempo, int costo, int num_transporte, char* nom_transporte);
+void eliminarConexion(red* r, char* origen, char* destino);
 
 //Busquedas por filtros
 
