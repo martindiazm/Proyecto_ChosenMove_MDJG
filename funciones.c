@@ -20,6 +20,17 @@ void agregarLugar(red* r, char* nombre){
     r->cantidad_actual++;
 }
 
+void mostrarLugares (red* r)
+{
+    lugar* l = map_first(r->lugares);
+
+    while (l != NULL)
+        {
+            printf("%s\n", l->nombre);
+
+            l = map_next(r->lugares);
+}
+
 void agregarConexion(red* r, char* origen, char* destino, int tiempo, int costo, int num_transporte, char* nom_transporte){
     lugar* l_origen=(lugar*)map_search(r->lugares, origen);
     if(l_origen==NULL)return;
@@ -32,6 +43,29 @@ void agregarConexion(red* r, char* origen, char* destino, int tiempo, int costo,
     strcpy(c->transporte.nombre, nom_transporte);
 
     list_pushBack(l_origen->conexiones, c);
+}
+
+void eliminarConexion(red* r, char* origen, char* destino)
+{
+    lugar* l_origen=(lugar*)map_search(r->lugares, origen);
+
+    if(l_origen==NULL)return;
+
+    conexion * c = list_first(l_origen->conexiones);
+
+    while (c != NULL)
+    {
+            if (strcmp(c->origen, destino) == 0)
+            {
+                list_removeCurrent(l_origen->conexiones);
+                
+                free(c);
+
+                return;
+            }
+        
+        c = next_list(l_origen->conexiones);
+    }
 }
 
 
