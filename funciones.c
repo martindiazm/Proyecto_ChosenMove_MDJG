@@ -20,20 +20,61 @@ void agregarLugar(red* r, char* nombre){
     r->cantidad_actual++;
 }
 
+void eliminarLugar (red* r, char* nombre)
+{
+    MapPair* pair = map_search(r->lugares, nombre);
+
+    while (pair == NULL)
+    {
+         return;
+    }
+
+    lugar* l = pair->value;
+
+    conexion* c = list_popFront(l->conexiones);
+
+    while (c != NULL)
+        {
+            free(c);
+
+            c = (conexion*) list_popFront(l->conexiones);
+        }
+    
+    MapPair* eliminado = map_remove(r->lugares, nombre);
+
+    free(l->conexiones);
+
+    free(l);
+
+    if (eliminado == NULL)
+    {
+        free(eliminado);
+    }
+
+    r->cantidad_actual--;
+}
+
 void mostrarLugares (red* r)
 {
-    lugar* l = map_first(r->lugares);
+    MapPair* pair = map_first(r->lugares);
 
-    while (l != NULL)
+    while (pair != NULL)
         {
+            lugar* l = (lugar*) pair->value;
+
             printf("%s\n", l->nombre);
 
-            l = map_next(r->lugares);
+            pair = map_next(r->lugares);
+
+        }
 }
 
 void agregarConexion(red* r, char* origen, char* destino, int tiempo, int costo, int num_transporte, char* nom_transporte){
-    lugar* l_origen=(lugar*)map_search(r->lugares, origen);
-    if(l_origen==NULL)return;
+    MapPair* pair = map_search(r->lugares, origen);
+    
+    if (pair == NULL) return;
+
+    lugar* l_origen = (lugar*) pair->value;
 
     conexion* c=(conexion*)malloc(sizeof(conexion));
     strcpy(c->origen, destino); //Origen desde la perspectiva del nodo es el destino
@@ -47,7 +88,11 @@ void agregarConexion(red* r, char* origen, char* destino, int tiempo, int costo,
 
 void eliminarConexion(red* r, char* origen, char* destino)
 {
-    lugar* l_origen=(lugar*)map_search(r->lugares, origen);
+    MapPair* pair = map_search(r->lugares, origen);
+
+    if (pair == NULL) return;
+    
+    lugar* l_origen= (lugar*) pair-> value;
 
     if(l_origen == NULL)
     {
