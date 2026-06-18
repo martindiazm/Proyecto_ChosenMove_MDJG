@@ -47,7 +47,7 @@ red* crearRed(int capacidad_maxima);
 
 void agregarLugar(red* r, char* nombre);
 void eliminarLugar(red *r, char* nombre);
-void mostrarLugares(red *r, char* nombre);
+void mostrarLugares(red *r);
 
 //Funciones con respecto a las conexiones
 
