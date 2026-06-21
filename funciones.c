@@ -77,7 +77,7 @@ void agregarConexion(red* r, char* origen, char* destino, int tiempo, int costo,
     lugar* l_origen = (lugar*) pair->value;
 
     conexion* c=(conexion*)malloc(sizeof(conexion));
-    strcpy(c->origen, destino); //Origen desde la perspectiva del nodo es el destino
+    strcpy(c->destino, destino); 
     c->tiempo=tiempo;
     c->costo=costo;
     c->transporte.numero=num_transporte;
@@ -103,7 +103,7 @@ void eliminarConexion(red* r, char* origen, char* destino)
 
     while (c != NULL)
     {
-            if (strcmp(c->origen, destino) == 0)
+            if (strcmp(c->destino, destino) == 0)
             {
                 conexion* eliminada = list_popCurrent(l_origen->conexiones);
                 
@@ -112,9 +112,26 @@ void eliminarConexion(red* r, char* origen, char* destino)
                 return;
             }
         
-        c = next_list(l_origen->conexiones);
+        c = list_next(l_origen->conexiones);
     }
 }
 
+void busquedaRapidez(red* r, char* origen, char* destino, int tiempo, int costo, int num_transporte, char* nom_transporte)
+{
 
+}
 
+void busquedaEconomica (red* r, char* origen, char* destino, int tiempo, int costo, int num_transporte, char* nom_transporte)
+{
+
+}
+
+void busquedaMixta (red* r, char* origen, char* destino, int tiempo, int costo, int num_transporte, char* nom_transporte)
+{
+
+}
+
+void generarGraphviz(red* r, char* nombreRed)
+{
+
+}

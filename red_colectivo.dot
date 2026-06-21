@@ -1,0 +1,5 @@
+digraph red_colectivo {
+rankdir=LR;
+node [shape=circle];
+
+}

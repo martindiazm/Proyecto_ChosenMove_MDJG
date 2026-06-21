@@ -1,23 +1,8 @@
 #include "funciones.h"
 
-// Definición de las funciones 
 
-/* Para no complicarnos tanto con las conexiones del grafo podemos crear 4 grafos
 
-red_caminando
-red_metro
-red_micro
-red_colectivo
-
-Así hacemos que de un punto A a un punto B haya solo una conexión y no 4 al mismo tiempo,
-aunque esto tambien limita nuestro programa a solo 1 transporte por viaje, es decir no se pueden hacer combinaciones como
-De punto A a punto B (caminando), de punto B a punto C (micro), de punto C a punto D (metro)
-y si lo hacemos va a ser bastante más complejo xd
-*\
-
-// Definición de las funciones 
-
-/* 
+/*
 BUSCAR RUTA:
 El programa le pide:
 Origen: El usuario escribe el nombre del lugar de partida y presiona Enter. Si el lugar no existe en la red, el programa muestra "Lugar de origen no encontrado" y vuelve al menú.
@@ -54,7 +39,7 @@ Si alguno de los lugares no existe, muestra "Lugar no encontrado". Si ya existe 
 
 Eliminar conexión: El usuario escribe 2. El programa solicita el nombre del lugar de origen y el nombre del lugar de destino. Si la conexión no existe entre ellos, muestra "Conexión no encontrada". Si existe, la elimina y muestra "Conexión eliminada correctamente", luego vuelve al submenú
 
-    */
+*/
 
 
 
@@ -141,12 +126,12 @@ int main(){
                     switch (opcion3){
                         case '1':
                             char nombre[30];
-                            printf("Ingrese nombre del lugar: ");
+                            printf("\nIngrese nombre del lugar: ");
                             scanf(" %29s", nombre);
 
-                            // Preguntar a qué red(es) agregar
+                            
                              char opcionRed;
-                             puts("¿En qué red desea agregar el lugar?");
+                             puts("\nEn que red desea agregar el lugar?");
                              puts("1) Caminando");
                              puts("2) Metro");
                              puts("3) Micro");
@@ -172,16 +157,25 @@ int main(){
                                     break;
                                 
                                 default:
-                                    puts("Opcion invalida");
+                                    puts("\nOpcion invalida");
                                     break;
                             }
-                            puts("Lugar agregado exitosamente");
+                            puts("\nLugar agregado exitosamente");
                             break;
                         case '2':
                             //Eliminar
+
+
+
+
                             break;
                         case '3':
                             //Mostrar lista
+
+
+
+
+
                             break;
                     }
                     if (opcion3 != '4') 
@@ -224,7 +218,7 @@ int main(){
                             scanf("%d", &costo);
 
                             char opcionRed;
-                            puts("Tipo de transporte:");
+                            puts("\nTipo de transporte:");
                             puts("1) Caminando");
                             puts("2) Metro");
                             puts("3) Micro");
@@ -252,11 +246,16 @@ int main(){
                                 default:
                                     puts("Opcion invalida");
                                     break;
-                            }
-                            puts("Conexion agregada exitosamente");
+                            }   
+                            puts("\nConexion agregada exitosamente");
                             break;
                         case '2':
                             //Eliminar
+
+
+
+
+                            
                             break;
     
                     }
@@ -271,7 +270,13 @@ int main(){
                     
                 break;
             case '4':
-                printf("hola \n");
+                puts("Generando grafos...");
+
+                generarGraphviz(red_caminando, "red_caminando");
+                generarGraphviz(red_metro, "red_metro");
+                generarGraphviz(red_micro, "red_micro");
+                generarGraphviz(red_colectivo, "red_colectivo");
+                
                 break;
         }
 
@@ -284,6 +289,8 @@ int main(){
         }
         
     } while (opcion != '5');
+
+    puts("\nCerrando ChosenMove...\n");
 
   return 0;
 

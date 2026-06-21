@@ -1,0 +1,8 @@
+digraph red_caminando {
+rankdir=LR;
+node [shape=circle];
+
+"a" -> "e" [label="10 min | $100"];
+"a" -> "E" [label="99 min | $5"];
+"a" -> "C" [label="1 min | $1"];
+}

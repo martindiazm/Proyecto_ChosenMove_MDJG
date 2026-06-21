@@ -25,3 +25,18 @@ Para agregar los cambios realizados por otros
 git pull
 ````
 Si les sale un mensaje en inglés, presionan la tecla "Esc" y escriben ":wq" xd
+
+
+Para visualizar la red de transporte hay que descargar "Graphviz" y añadirlo a las variables de entorno del sistema,
+solo así se podran generar imágenes que representen correctamente cada grafo 
+
+
+# Cosas que faltan:
+
+## Eliminar lugar de los grafos (agregar al main)
+## Mostrar lista de lugares añadidos (agregar al main)
+## Eliminar conexion de los grafos (agregar al main)
+## BusquedaRapidez
+## BusquedaEconomica
+## BusquedaMixta
+## Mostrar red con Graphviz

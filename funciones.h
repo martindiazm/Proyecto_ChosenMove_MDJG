@@ -20,7 +20,7 @@ typedef struct {
 } tipoTransporte; 
 
 typedef struct {
-    char origen[30];
+    char destino[30];
     int tiempo;
     int costo;
     tipoTransporte transporte;
@@ -59,5 +59,9 @@ void eliminarConexion(red* r, char* origen, char* destino);
 void busquedaRapidez(red* r, char* origen, char* destino, int tiempo, int costo, int num_transporte, char* nom_transporte);
 void busquedaEconomica (red* r, char* origen, char* destino, int tiempo, int costo, int num_transporte, char* nom_transporte);
 void busquedaMixta (red* r, char* origen, char* destino, int tiempo, int costo, int num_transporte, char* nom_transporte);
+
+// Función para mostrar la red de transporte
+
+void generarGraphviz(red* r, char* nombreRed);
 
 #endif
