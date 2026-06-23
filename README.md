@@ -46,7 +46,7 @@ system Path:
 
 hay que seleccionar la 2da o 3ra opcion, luego de eso funciona sin problemas.
 
-## Problemas 
+# Problemas 
 El agregar conexiones no verifica si los nombres existen, si no existen crea el nodo pero solo si el de lugar de origen si existia anteriormente,si ninguno de los ingresados o el de origen no existe, no pasa nada.
 
 tambien se puede hacer una dobleconxion entre los dos nodos con distintos valores de tiempo y costo,
