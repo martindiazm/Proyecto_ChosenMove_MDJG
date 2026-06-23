@@ -40,3 +40,12 @@ solo así se podran generar imágenes que representen correctamente cada grafo
 ## BusquedaEconomica
 
 ## Mostrar red con Graphviz
+
+## Problemas 
+El agregar conexiones no verifica si los nombres existen, si no existen crea el nodo,
+tambien se puede hacer una dobleconxion entre los dos nodos con distintos valores de tiempo y costo,
+puedo poner varias conexiones en la misma dirrecion con distintos valores.
+
+El agregar lugar no da retroalimentacion si se ingresa el mismo nombre de un lugar ya existente, solo indica que se agrego el lugar
+
+![Ejemplo grafo](red_caminando.png)

@@ -329,7 +329,75 @@ void busquedaEquilibrada (red* r, char* origen, char* destino, double alpha)
 
 }
 
-void generarGraphviz(red* r, char* nombreRed)
-{
+void generarGraphviz(red* r, char* nombreRed){
+    if(r==NULL)return;
+    if(r->cantidad_actual==0){
+        printf("\nLa red \"%s\" esta vacia, no hay nada que graficar.\n", nombreRed);
+        return;
+        }
 
+    /*Nombres de los archivos a generar, se sobreescriben en cada llamada,
+    por lo que el grafo siempre refleja el estado actual de la red*/
+    char archivoDot[100];
+    char archivoPng[100];
+    sprintf(archivoDot, "%s.dot", nombreRed);
+    sprintf(archivoPng, "%s.png", nombreRed);
+
+    FILE* f=fopen(archivoDot, "w");
+    if(f==NULL){
+        printf("\nNo se pudo crear el archivo %s\n", archivoDot);
+        return;
+        }
+
+    fprintf(f, "digraph %s {\n", nombreRed);
+    fprintf(f, "rankdir=LR;\n");
+    fprintf(f, "node [shape=ellipse, style=filled, fillcolor=\"#cfe8ff\", fontname=\"Helvetica\"];\n");
+    fprintf(f, "edge [fontname=\"Helvetica\", fontsize=10];\n\n");
+
+//Se declaran todos los lugares como nodos
+    MapPair* pair=map_first(r->lugares);
+    while(pair != NULL){
+        lugar* l=(lugar*)pair->value;
+        fprintf(f, "\"%s\";\n", l->nombre);
+        pair=map_next(r->lugares);
+    }
+    fprintf(f, "\n");
+
+//Se recorren las conexiones de cada lugar y se generan las aristas
+    pair=map_first(r->lugares);
+    while(pair != NULL){
+        lugar* l=(lugar*)pair->value;
+        conexion* c=list_first(l->conexiones);
+        while(c != NULL){
+            fprintf(f, "\"%s\" -> \"%s\" [label=\"%d min\\n$%d\"];\n", l->nombre, c->destino, c->tiempo, c->costo);
+            c=list_next(l->conexiones);
+        }
+        pair=map_next(r->lugares);
+    }
+
+    fprintf(f, "}\n");
+    fclose(f);
+
+//Se llama Graphviz para renderizar el .dot como imagen .png
+    char comando[250];
+    sprintf(comando, "dot -Tpng %s -o %s", archivoDot, archivoPng);
+
+    int resultado=system(comando);
+
+    if(resultado != 0){
+        printf("\nNo se pudo generar la imagen. Verifica que Graphviz este instalado\n");
+        printf("y agregado a las variables de entorno (PATH) del sistema.\n");
+        return;
+        }
+
+ //Se abre automaticamente la imagen generada
+    char comandoAbrir[250];
+    sprintf(comandoAbrir, "start %s", archivoPng);
+    int resultadoAbrir=system(comandoAbrir);
+    if(resultadoAbrir != 0){
+        printf("\nRed \"%s\" graficada correctamente, pero no se pudo abrir automaticamente.\n", nombreRed);
+        printf("Puedes abrir el archivo manualmente: %s\n", archivoPng);
+        }
+    else printf("\nRed \"%s\" graficada correctamente (%s)\n", nombreRed, archivoPng);
 }
+

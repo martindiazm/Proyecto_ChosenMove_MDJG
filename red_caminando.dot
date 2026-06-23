@@ -1,0 +1,19 @@
+digraph red_caminando {
+rankdir=LR;
+node [shape=ellipse, style=filled, fillcolor="#cfe8ff", fontname="Helvetica"];
+edge [fontname="Helvetica", fontsize=10];
+
+"papu";
+"papu2";
+"papu3";
+"papu4";
+
+"papu" -> "papu2" [label="10 min\n$20"];
+"papu" -> "papu3" [label="100000 min\n$20"];
+"papu" -> "papu3" [label="552894464 min\n$-1530494977"];
+"papu2" -> "papu3" [label="3000 min\n$12"];
+"papu2" -> "papu1" [label="102 min\n$2222"];
+"papu3" -> "papu1" [label="1111 min\n$222"];
+"papu3" -> "papu600" [label="21 min\n$131"];
+"papu3" -> "papu" [label="200 min\n$102"];
+}
