@@ -43,6 +43,7 @@ solo así se podran generar imágenes que representen correctamente cada grafo
 Para que funcione el graficar, es necesario instalar Graphviz, y cuando pregunte por instalar 
 system Path:
 ![Instalacion](imagenes/GraphvizEjemeplo.png)
+
 hay que seleccionar la 2da o 3ra opcion, luego de eso funciona sin problemas.
 
 ## Problemas 
