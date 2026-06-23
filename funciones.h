@@ -29,6 +29,10 @@ typedef struct {
 typedef struct {
     char nombre[30];
     List* conexiones;
+
+    double distancia;
+    int visitado;
+    char anterior[30];
 } lugar;
 
 typedef struct {
@@ -56,9 +60,9 @@ void eliminarConexion(red* r, char* origen, char* destino);
 
 //Busquedas por filtros
 
-void busquedaRapidez(red* r, char* origen, char* destino, int tiempo, int costo, int num_transporte, char* nom_transporte);
-void busquedaEconomica (red* r, char* origen, char* destino, int tiempo, int costo, int num_transporte, char* nom_transporte);
-void busquedaMixta (red* r, char* origen, char* destino, int tiempo, int costo, int num_transporte, char* nom_transporte);
+void busquedaRapidez(red* r, char* origen, char* destino);
+void busquedaEconomica (red* r, char* origen, char* destino);
+void busquedaEquilibrada (red* r, char* origen, char* destino, double alpha);
 
 // Función para mostrar la red de transporte
 

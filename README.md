@@ -38,5 +38,5 @@ solo así se podran generar imágenes que representen correctamente cada grafo
 ## Eliminar conexion de los grafos (agregar al main)
 ## BusquedaRapidez
 ## BusquedaEconomica
-## BusquedaMixta
+
 ## Mostrar red con Graphviz

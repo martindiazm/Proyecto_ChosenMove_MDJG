@@ -71,7 +71,13 @@ int main(){
         switch (opcion) 
         {
             case '1':
-                printf("\n");
+                char origen[30];
+                printf("\nIngrese nombre del origen de la ruta: ");
+                scanf(" %29s", origen);
+
+                char destino[30];
+                printf("\nIngrese nombre del destino de la ruta: ");
+                scanf(" %29s", destino);
 
                 char opcion2;
                 do
@@ -86,16 +92,251 @@ int main(){
                     printf("Ingrese su opcion: ");
                     scanf(" %c", &opcion2);
                     
+
                     switch (opcion2) 
                     {
                         case '1':
+                            char opcionRed1;
+                             puts("\nEn que red desea buscar ruta?");
+                             puts("1) Caminando");
+                             puts("2) Metro");
+                             puts("3) Micro");
+                             puts("4) Colectivo");
+                             printf("Ingrese su opcion: ");
+                             scanf(" %c", &opcionRed1);
 
+                            switch (opcionRed1) 
+                            {
+                                case '1':
+
+                                    if(map_search(red_caminando->lugares, origen) == NULL)
+                                    {
+                                        printf("\nLugar de origen no encontrado en la red caminando\n");
+                                        break;
+                                    }
+
+                                    if(map_search(red_caminando->lugares, destino) == NULL)
+                                    {
+                                        printf("\nLugar de destino no encontrado en la red caminando\n");
+                                        break;
+                                    }
+
+                                    busquedaRapidez(red_caminando, origen, destino);
+                                    break;
+                                
+                                case '2':
+                                    
+                                    if(map_search(red_metro->lugares, origen) == NULL)
+                                    {
+                                        printf("\nLugar de origen no encontrado en la red metro\n");
+                                        break;
+                                    }
+
+                                    if(map_search(red_metro->lugares, destino) == NULL)
+                                    {
+                                        printf("\n Lugar de destino no encontrado en la red metro\n");
+                                        break;
+                                    }
+
+                                    busquedaRapidez(red_metro, origen, destino);
+                                    break;
+                                
+                                case '3':
+
+                                    if(map_search(red_micro->lugares, origen) == NULL)
+                                    {
+                                        printf("\nLugar de origen no encontrado en la red micro\n");
+                                        break;
+                                    }
+
+                                    if(map_search(red_micro->lugares, destino) == NULL)
+                                    {
+                                        printf("\nLugar de destino no encontrado en la red micro\n");
+                                        break;
+                                    }
+
+                                    busquedaRapidez(red_micro, origen, destino);
+                                    break;
+                                
+                                case '4':
+
+                                    if(map_search(red_colectivo->lugares, origen) == NULL)
+                                    {
+                                        printf("\nLugar de origen no encontrado en la red colectivo\n");
+                                        break;
+                                    }
+
+                                    if(map_search(red_colectivo->lugares, destino) == NULL)
+                                    {
+                                        printf("Lugar de destino no encontrado en la red colectivo\n");
+                                        break;
+                                    }
+
+                                    busquedaRapidez(red_colectivo, origen, destino);
+                                    break;
+                                
+                                default:
+                                    puts("\nOpcion invalida");
+                                    break;
+                            }
                             break;
                         case '2':
+                            char opcionRed2;
+                             puts("\nEn que red desea buscar ruta?");
+                             puts("1) Caminando");
+                             puts("2) Metro");
+                             puts("3) Micro");
+                             puts("4) Colectivo");
+                             printf("Ingrese su opcion: ");
+                             scanf(" %c", &opcionRed2);
 
+                            switch (opcionRed2) 
+                            {
+                                case '1':
+
+                                    if(map_search(red_caminando->lugares, origen) == NULL)
+                                    {
+                                        printf("\nLugar de origen no encontrado en la red caminando\n");
+                                        break;
+                                    }
+
+                                    if(map_search(red_caminando->lugares, destino) == NULL)
+                                    {
+                                        printf("Lugar de destino no encontrado en la red caminando\n");
+                                        break;
+                                    }
+
+                                    busquedaEconomica(red_caminando, origen, destino);
+                                    break;
+                                
+                                case '2':
+                                    if(map_search(red_metro->lugares, origen) == NULL)
+                                    {
+                                        printf("\nLugar de origen no encontrado en la red metro\n");
+                                        break;
+                                    }
+
+                                    if(map_search(red_metro->lugares, destino) == NULL)
+                                    {
+                                        printf("Lugar de destino no encontrado en la red metro\n");
+                                        break;
+                                    }
+                                    busquedaEconomica(red_metro, origen, destino);
+                                    break;
+                                
+                                case '3':
+                                    if(map_search(red_micro->lugares, origen) == NULL)
+                                    {
+                                        printf("\nLugar de origen no encontrado en la red micro\n");
+                                        break;
+                                    }
+
+                                    if(map_search(red_micro->lugares, destino) == NULL)
+                                    {
+                                        printf("\nLugar de destino no encontrado en la red micro\n");
+                                        break;
+                                    }
+                                    busquedaEconomica(red_micro, origen, destino);
+                                    break;
+                                
+                                case '4':
+                                    if(map_search(red_colectivo->lugares, origen) == NULL)
+                                    {
+                                        printf("\nLugar de origen no encontrado en la red colectivo\n");
+                                        break;
+                                    }
+
+                                    if(map_search(red_colectivo->lugares, destino) == NULL)
+                                    {
+                                        printf("\nLugar de destino no encontrado en la red colectivo\n");
+                                        break;
+                                    }
+                                    busquedaEconomica(red_colectivo, origen, destino);
+                                    break;
+                                
+                                default:
+                                    puts("\nOpcion invalida");
+                                    break;
+                            }
                             break;
                         case '3':
+                            char opcionRed3;
+                            double alpha = 0.5; // Valor por defecto para la búsqueda equilibrada
+                             puts("\nEn que red desea buscar ruta?");
+                             puts("1) Caminando");
+                             puts("2) Metro");
+                             puts("3) Micro");
+                             puts("4) Colectivo");
+                             printf("Ingrese su opcion: ");
+                             scanf(" %c", &opcionRed3);
 
+
+                            switch (opcionRed3) 
+                            {
+                                case '1':
+                                    if(map_search(red_caminando->lugares, origen) == NULL)
+                                    {
+                                        printf("\nLugar de origen no encontrado en la red caminando\n");
+                                        break;
+                                    }
+
+                                    if(map_search(red_caminando->lugares, destino) == NULL)
+                                    {
+                                        printf("Lugar de destino no encontrado en la red caminando\n");
+                                        break;
+                                    }
+                                    busquedaEquilibrada(red_caminando, origen, destino, alpha);
+                                    break;
+                                
+                                case '2':
+                                    if(map_search(red_metro->lugares, origen) == NULL)
+                                    {
+                                        printf("\nLugar de origen no encontrado en la red metro\n");
+                                        break;
+                                    }
+
+                                    if(map_search(red_metro->lugares, destino) == NULL)
+                                    {
+                                        printf("Lugar de destino no encontrado en la red metro\n");
+                                        break;
+                                    }
+                                    busquedaEquilibrada(red_metro, origen, destino, alpha);
+                                    break;
+                                
+                                case '3':
+                                    if(map_search(red_micro->lugares, origen) == NULL)
+                                    {
+                                        printf("\nLugar de origen no encontrado en la red micro\n");
+                                        break;
+                                    }
+
+                                    if(map_search(red_micro->lugares, destino) == NULL)
+                                    {
+                                        printf("Lugar de destino no encontrado en la red micro\n");
+                                        break;
+                                    }
+                                    busquedaEquilibrada(red_micro, origen, destino, alpha);
+                                    break;
+                                
+                                case '4':
+                                    if(map_search(red_colectivo->lugares, origen) == NULL)
+                                    {
+                                        printf("\nLugar de origen no encontrado en la red colectivo\n");
+                                        break;
+                                    }
+
+                                    if(map_search(red_colectivo->lugares, destino) == NULL)
+                                    {
+                                        printf("Lugar de destino no encontrado en la red colectivo\n");
+                                        break;
+                                    }
+                                    busquedaEquilibrada(red_colectivo, origen, destino, alpha);
+                                    break;
+                                
+                                default:
+                                    puts("\nOpcion invalida");
+                                    break;
+                            }
                             break;
                     }
                     if (opcion2 != '4') 
@@ -139,7 +380,8 @@ int main(){
                              printf("Ingrese su opcion: ");
                              scanf(" %c", &opcionRed);
 
-                            switch (opcionRed) {
+                            switch (opcionRed) 
+                            {
                                 case '1':
                                     agregarLugar(red_caminando, nombre);
                                     break;

@@ -22,7 +22,7 @@ void* heap_top(Heap* pq){
     return pq->heapArray[0].data;
 }
 
-void heap_push(Heap* pq, void* data, int priority){
+void heap_push(Heap* pq, void* data, double priority){
 
     if(pq->size+1>pq->capac){
         //printf("se expande de %i a ", pq->capac);
