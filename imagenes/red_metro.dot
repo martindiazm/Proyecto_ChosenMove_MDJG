@@ -1,0 +1,11 @@
+digraph red_metro {
+rankdir=LR;
+node [shape=ellipse, style=filled, fillcolor="#cfe8ff", fontname="Helvetica"];
+edge [fontname="Helvetica", fontsize=10];
+
+"papumetro";
+"papumetro2";
+"papumetro3";
+
+"papumetro" -> "papumetro2" [label="20 min\n$1222"];
+}

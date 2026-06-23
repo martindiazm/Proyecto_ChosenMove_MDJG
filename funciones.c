@@ -340,8 +340,8 @@ void generarGraphviz(red* r, char* nombreRed){
     por lo que el grafo siempre refleja el estado actual de la red*/
     char archivoDot[100];
     char archivoPng[100];
-    sprintf(archivoDot, "%s.dot", nombreRed);
-    sprintf(archivoPng, "%s.png", nombreRed);
+    sprintf(archivoDot, "imagenes/%s.dot", nombreRed);
+    sprintf(archivoPng, "imagenes/%s.png", nombreRed);
 
     FILE* f=fopen(archivoDot, "w");
     if(f==NULL){
