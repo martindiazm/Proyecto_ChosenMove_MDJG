@@ -10,7 +10,11 @@ red* crearRed(int capacidad_maxima){
 
 void agregarLugar(red* r, char* nombre){
     if(r->cantidad_actual>=r->capacidad_maxima)return;
-    if(map_search(r->lugares, nombre) != NULL)return;
+    if(map_search(r->lugares, nombre) != NULL)
+    {
+        printf("\nEl lugar \"%s\" ya existe en la red, no se puede agregar nuevamente.\n", nombre);
+        return;
+    }
 
     lugar* l=(lugar*)malloc(sizeof(lugar));
     strcpy(l->nombre, nombre);
@@ -18,6 +22,7 @@ void agregarLugar(red* r, char* nombre){
 
     map_insert(r->lugares, l->nombre, l);
     r->cantidad_actual++;
+    puts("\nLugar agregado exitosamente");
 }
 
 void eliminarLugar (red* r, char* nombre)
@@ -329,7 +334,8 @@ void busquedaEquilibrada (red* r, char* origen, char* destino, double alpha)
 
 }
 
-void generarGraphviz(red* r, char* nombreRed){
+void generarGraphviz(red* r, char* nombreRed)
+{
     if(r==NULL)return;
     if(r->cantidad_actual==0){
         printf("\nLa red \"%s\" esta vacia, no hay nada que graficar.\n", nombreRed);
