@@ -4,6 +4,8 @@ node [shape=ellipse, style=filled, fillcolor="#cfe8ff", fontname="Helvetica"];
 edge [fontname="Helvetica", fontsize=10];
 
 "a";
+"e";
 
-"a" -> "e" [label="100 min\n$500"];
+"a" -> "e" [label="100 min\n$600"];
+"a" -> "a" [label="100 min\n$100"];
 }

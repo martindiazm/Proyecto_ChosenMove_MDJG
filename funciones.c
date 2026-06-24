@@ -63,6 +63,7 @@ void mostrarLugares (red* r)
 {
     MapPair* pair = map_first(r->lugares);
 
+    printf("\n");
     while (pair != NULL)
         {
             lugar* l = (lugar*) pair->value;
@@ -76,8 +77,24 @@ void mostrarLugares (red* r)
 
 void agregarConexion(red* r, char* origen, char* destino, int tiempo, int costo, int num_transporte, char* nom_transporte){
     MapPair* pair = map_search(r->lugares, origen);
-    
-    if (pair == NULL) return;
+    MapPair* destinoPair = map_search(r->lugares, destino);
+    if (pair == NULL) 
+    {
+        printf("\nLugar de origen no encontrado en la red\n");
+        return;
+    }
+
+    if (destinoPair == NULL)
+    {
+        printf("\nLugar de destino no encontrado en la red\n");
+        return;
+    }
+
+    if (strcmp(origen, destino) == 0)
+    {
+        printf("\nNo se puede agregar una conexion hacia el mismo lugar\n");
+        return;
+    }
 
     lugar* l_origen = (lugar*) pair->value;
 
@@ -87,8 +104,17 @@ void agregarConexion(red* r, char* origen, char* destino, int tiempo, int costo,
     c->costo=costo;
     c->transporte.numero=num_transporte;
     strcpy(c->transporte.nombre, nom_transporte);
-
+    conexion* aux = list_first(l_origen->conexiones);
+    for(int i=0; i<list_size(l_origen->conexiones); i++){
+        if(strcmp(aux->destino, destino)==0){
+            printf("\nYa existe una conexion desde %s hacia %s\n", origen, destino);
+            return;
+        }
+        aux = list_next(l_origen->conexiones);
+    }
     list_pushBack(l_origen->conexiones, c);
+    puts("\nConexion agregada exitosamente");
+
 }
 
 void eliminarConexion(red* r, char* origen, char* destino)

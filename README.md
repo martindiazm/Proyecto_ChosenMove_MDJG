@@ -29,7 +29,6 @@ Si les sale un mensaje en inglés, presionan la tecla "Esc" y escriben ":wq" xd
 # Cosas que faltan:
 
 ## Eliminar lugar de los grafos (agregar al main)
-## Mostrar lista de lugares añadidos (agregar al main)
 ## Eliminar conexion de los grafos (agregar al main)
 ## BusquedaRapidez
 ## BusquedaEconomica
@@ -75,14 +74,7 @@ hay que seleccionar la 2da o 3ra opcion, luego de eso funciona sin problemas.
 
 Las redes de transporte son independientes, por lo que actualmente no se permiten viajes que combinen distintos medios de transporte.
 
-El agregar conexiones no verifica si los nombres existen, si no existen crea el nodo pero solo si el de lugar de origen si existia anteriormente,si ninguno de los ingresados o el de origen no existe, no pasa nada.
-
-Tambien se puede hacer una dobleconxion entre los dos nodos con distintos valores de tiempo y costo,
-puedo poner varias conexiones en la misma dirrecion con distintos valores.
-
-El agregar lugar no da retroalimentacion si se ingresa el mismo nombre de un lugar ya existente, solo indica que se agrego el lugar
-
-![Ejemplo grafo](imagenes/red_caminando.png)
+Se puede hacer una dobleconexion entre los dos nodos con distintos valores de tiempo y costo.
 
 
 ## Funcionalidades
@@ -132,7 +124,7 @@ La conexión queda almacenada dentro de la lista de adyacencia del lugar origen.
 Elimina una conexión específica entre dos lugares.
 
 
-- ## #Mostrar Red de Transporte
+- ### Mostrar Red de Transporte
 
 Genera una representación visual de cada grafo mediante Graphviz.
 

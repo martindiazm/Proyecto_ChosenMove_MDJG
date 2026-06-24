@@ -134,7 +134,7 @@ int main(){
 
                                     if(map_search(red_metro->lugares, destino) == NULL)
                                     {
-                                        printf("\n Lugar de destino no encontrado en la red metro\n");
+                                        printf("\nLugar de destino no encontrado en la red metro\n");
                                         break;
                                     }
 
@@ -168,7 +168,7 @@ int main(){
 
                                     if(map_search(red_colectivo->lugares, destino) == NULL)
                                     {
-                                        printf("Lugar de destino no encontrado en la red colectivo\n");
+                                        printf("\nLugar de destino no encontrado en la red colectivo\n");
                                         break;
                                     }
 
@@ -202,7 +202,7 @@ int main(){
 
                                     if(map_search(red_caminando->lugares, destino) == NULL)
                                     {
-                                        printf("Lugar de destino no encontrado en la red caminando\n");
+                                        printf("\nLugar de destino no encontrado en la red caminando\n");
                                         break;
                                     }
 
@@ -218,7 +218,7 @@ int main(){
 
                                     if(map_search(red_metro->lugares, destino) == NULL)
                                     {
-                                        printf("Lugar de destino no encontrado en la red metro\n");
+                                        printf("\nLugar de destino no encontrado en la red metro\n");
                                         break;
                                     }
                                     busquedaEconomica(red_metro, origen, destino);
@@ -297,7 +297,7 @@ int main(){
 
                                     if(map_search(red_metro->lugares, destino) == NULL)
                                     {
-                                        printf("Lugar de destino no encontrado en la red metro\n");
+                                        printf("\nLugar de destino no encontrado en la red metro\n");
                                         break;
                                     }
                                     busquedaEquilibrada(red_metro, origen, destino, alpha);
@@ -312,7 +312,7 @@ int main(){
 
                                     if(map_search(red_micro->lugares, destino) == NULL)
                                     {
-                                        printf("Lugar de destino no encontrado en la red micro\n");
+                                        printf("\nLugar de destino no encontrado en la red micro\n");
                                         break;
                                     }
                                     busquedaEquilibrada(red_micro, origen, destino, alpha);
@@ -327,7 +327,7 @@ int main(){
 
                                     if(map_search(red_colectivo->lugares, destino) == NULL)
                                     {
-                                        printf("Lugar de destino no encontrado en la red colectivo\n");
+                                        printf("\nLugar de destino no encontrado en la red colectivo\n");
                                         break;
                                     }
                                     busquedaEquilibrada(red_colectivo, origen, destino, alpha);
@@ -515,7 +515,7 @@ int main(){
                                     puts("Opcion invalida");
                                     break;
                             }   
-                            puts("\nConexion agregada exitosamente");
+                        
                             break;
                         case '2':
                             //Eliminar
