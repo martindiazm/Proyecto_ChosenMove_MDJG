@@ -30,8 +30,9 @@ void eliminarLugar (red* r, char* nombre)
     MapPair* pair = map_search(r->lugares, nombre);
 
     while (pair == NULL)
-    {
-         return;
+    {   
+        printf("\nLugar \"%s\" no encontrado en la red, no se puede eliminar.\n", nombre);
+        return;
     }
 
     lugar* l = pair->value;
@@ -50,6 +51,7 @@ void eliminarLugar (red* r, char* nombre)
     free(l->conexiones);
 
     free(l);
+    printf("\nLugar eliminado exitosamente\n");
 
     if (eliminado == NULL)
     {
@@ -121,7 +123,17 @@ void eliminarConexion(red* r, char* origen, char* destino)
 {
     MapPair* pair = map_search(r->lugares, origen);
 
-    if (pair == NULL) return;
+    if (pair == NULL)
+    {
+        printf("\nLugar de origen no encontrado en la red\n");
+        return;
+    }
+    MapPair* pair2 = map_search(r->lugares, destino);
+    if (pair2 == NULL)
+    {
+        printf("\nLugar de destino no encontrado en la red\n");
+        return;
+    }
     
     lugar* l_origen= (lugar*) pair-> value;
 
@@ -139,7 +151,7 @@ void eliminarConexion(red* r, char* origen, char* destino)
                 conexion* eliminada = list_popCurrent(l_origen->conexiones);
                 
                 free(eliminada);
-
+                printf("\nConexion desde %s hacia %s eliminada exitosamente\n", origen, destino);
                 return;
             }
         

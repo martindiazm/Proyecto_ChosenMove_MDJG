@@ -1,39 +1,5 @@
 # Proyecto_ChosenMove_MDJG
 
-Para ejecutar el código primero debemos compilar en PowerShell 
-````
-gcc main.c funciones.c tdas/*.c -o programa.exe
-````
-
-Y luego ejecutar:
-````
-.\programa.exe   
-````
-Para Realizar Cambios y Commits en Git Bash:
-````
-git add .                 
-````
-````
-git commit -m "Mensaje"   
-````
-Para Enviar Cambios a GitHub:
-````
-git push origin main
-````
-Para agregar los cambios realizados por otros 
-````
-git pull
-````
-Si les sale un mensaje en inglés, presionan la tecla "Esc" y escriben ":wq" xd
-
-# Cosas que faltan:
-
-## Eliminar lugar de los grafos (agregar al main)
-## Eliminar conexion de los grafos (agregar al main)
-## BusquedaRapidez
-## BusquedaEconomica
-
-
 ## Descripción 
 Este programa permite a los usuarios encontrar la ruta más óptima, bajo los criterios seleccionados, en una red de transporte
 construida manualmente, añadiendo cada lugar con su nombre y cada conexion desde un lugar de origen a un lugar de destino
@@ -150,7 +116,7 @@ red_colectivo.png
 ### Menú Principal
 
 ========================================
-        TRANSPORTE INTELIGENTE
+         TRANSPORTE INTELIGENTE
 ========================================
 
 1) Buscar ruta

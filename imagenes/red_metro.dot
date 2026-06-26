@@ -4,8 +4,14 @@ node [shape=ellipse, style=filled, fillcolor="#cfe8ff", fontname="Helvetica"];
 edge [fontname="Helvetica", fontsize=10];
 
 "a";
+"b";
+"c";
+"d";
 "e";
 
-"a" -> "e" [label="100 min\n$600"];
-"a" -> "a" [label="100 min\n$100"];
+"a" -> "b" [label="30 min\n$500"];
+"a" -> "d" [label="15 min\n$1000"];
+"b" -> "c" [label="30 min\n$500"];
+"c" -> "e" [label="30 min\n$500"];
+"d" -> "e" [label="15 min\n$1500"];
 }
