@@ -405,11 +405,36 @@ int main(){
                             
                             break;
                         case '2':
-                            //Eliminar
                             char nombre2[30];
-
+                            printf("\nIngrese nombre del lugar a eliminar: ");
+                            scanf(" %29s", nombre2);
 
                             char opcionRed5;
+                            puts("\nEn que red desea eliminar el lugar?");
+                            puts("1) Caminando");
+                            puts("2) Metro");
+                            puts("3) Micro");
+                            puts("4) Colectivo");
+                            printf("Ingrese su opcion: ");
+                            scanf(" %c", &opcionRed5);
+
+                            switch (opcionRed5) {
+                                case '1':
+                                    eliminarLugar(red_caminando, nombre2);
+                                    break;
+                                case '2':
+                                    eliminarLugar(red_metro, nombre2);
+                                    break;
+                                case '3':
+                                    eliminarLugar(red_micro, nombre2);
+                                    break;
+                                case '4':
+                                    eliminarLugar(red_colectivo, nombre2);
+                                    break;
+                                default:
+                                    puts("\nOpcion invalida");
+                                    break;
+                            }
                             break;
                         case '3':
                             
@@ -519,14 +544,41 @@ int main(){
                             break;
                         case '2':
                             //Eliminar
+                            char origen2[30], destino2[30];
+                            printf("Ingrese lugar de origen: ");
+                            scanf(" %29s", origen2);
+                            printf("Ingrese lugar de destino: ");
+                            scanf(" %29s", destino2);
 
+                            char opcionRed8;
+                            puts("\nTipo de transporte:");
+                            puts("1) Caminando");
+                            puts("2) Metro");
+                            puts("3) Micro");
+                            puts("4) Colectivo");
+                            printf("Ingrese su opcion: ");
+                            scanf(" %c", &opcionRed8);
 
-
-
-                            
+                            switch (opcionRed8) {
+                                case '1':
+                                    eliminarConexion(red_caminando, origen2, destino2);
+                                    break;
+                                case '2':
+                                    eliminarConexion(red_metro, origen2, destino2);
+                                    break;
+                                case '3':
+                                    eliminarConexion(red_micro, origen2, destino2);
+                                    break;
+                                case '4':
+                                    eliminarConexion(red_colectivo, origen2, destino2);
+                                    break;
+                                default:
+                                    puts("\nOpcion invalida");
+                                    break;
+                            }
                             break;
-    
                     }
+                    break;
                     if (opcion4 != '3') 
                     {
                         printf("\n");
