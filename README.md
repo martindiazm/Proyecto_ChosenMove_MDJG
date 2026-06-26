@@ -1,5 +1,5 @@
 # Proyecto_ChosenMove_MDJG
-
+# asdprueba
 Para ejecutar el código primero debemos compilar en PowerShell 
 ````
 gcc main.c funciones.c tdas/*.c -o programa.exe
