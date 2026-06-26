@@ -149,12 +149,208 @@ void eliminarConexion(red* r, char* origen, char* destino)
 
 void busquedaRapidez(red* r, char* origen, char* destino)
 {
+    MapPair* origenPair = map_search(r->lugares, origen);
+    MapPair* destinoPair = map_search(r->lugares, destino);
 
+    if (origenPair == NULL || destinoPair == NULL) {
+        printf("\nOrigen o destino no encontrados en la red.\n");
+        return;
+    }
+
+    MapPair* pair = map_first(r->lugares);
+    while (pair != NULL) {
+        lugar* l = (lugar*) pair->value;
+        l->distancia = 999999999;   
+        l->visitado = 0;
+        strcpy(l->anterior, "");
+        pair = map_next(r->lugares);
+    }
+
+    lugar* inicio = (lugar*) origenPair->value;
+    inicio->distancia = 0;
+
+    Heap* colaPrio = heap_create();
+    heap_push(colaPrio, inicio, 0);
+
+    // Algoritmo de Dijkstra usando tiempo como peso
+    while (heap_top(colaPrio) != NULL) {
+        lugar* actual = (lugar*) heap_top(colaPrio);
+        heap_pop(colaPrio);
+
+        if (actual->visitado) continue;
+        actual->visitado = 1;
+
+        conexion* c = (conexion*) list_first(actual->conexiones);
+        while (c != NULL) {
+            MapPair* vecinoPair = map_search(r->lugares, c->destino);
+            if (vecinoPair != NULL) {
+                lugar* vecino = (lugar*) vecinoPair->value;
+                int nuevaDist = actual->distancia + c->tiempo;
+
+                if (nuevaDist < vecino->distancia) {
+                    vecino->distancia = nuevaDist;
+                    strcpy(vecino->anterior, actual->nombre);
+                    heap_push(colaPrio, vecino, nuevaDist);
+                }
+            }
+            c = (conexion*) list_next(actual->conexiones);
+        }
+    }
+
+    lugar* fin = (lugar*) destinoPair->value;
+    if (fin->distancia >= 999999999) {
+        printf("\nNo existe ruta disponible.\n");
+        return;
+    }
+
+    Stack* ruta = stack_create(NULL);
+    char actualNombre[30];
+    strcpy(actualNombre, destino);
+
+    while (strlen(actualNombre) > 0) {
+        char* copia = (char*) malloc(30);
+        strcpy(copia, actualNombre);
+        stack_push(ruta, copia);
+
+        MapPair* p = map_search(r->lugares, actualNombre);
+        lugar* l = (lugar*) p->value;
+        strcpy(actualNombre, l->anterior);
+    }
+
+    printf("\n===== RUTA MÁS RÁPIDA =====\n");
+    char* anterior = NULL;
+    int tiempoTotal = 0, costoTotal = 0;
+
+    while (stack_top(ruta) != NULL) {
+        char* nombre = (char*) stack_top(ruta);
+        printf("%s", nombre);
+
+        if (anterior != NULL) {
+            MapPair* pair = map_search(r->lugares, anterior);
+            lugar* l = (lugar*) pair->value;
+            conexion* c = (conexion*) list_first(l->conexiones);
+
+            while (c != NULL) {
+                if (strcmp(c->destino, nombre) == 0) {
+                    tiempoTotal += c->tiempo;
+                    costoTotal += c->costo;
+                    break;
+                }
+                c = (conexion*) list_next(l->conexiones);
+            }
+        }
+
+        anterior = nombre;
+        stack_pop(ruta);
+
+        if (stack_top(ruta) != NULL) printf(" -> ");
+    }
+
+    printf("\n\nTiempo total: %d minutos\n", tiempoTotal);
+    printf("Costo total: $%d\n", costoTotal);
 }
 
 void busquedaEconomica (red* r, char* origen, char* destino)
 {
+    MapPair* origenPair = map_search(r->lugares, origen);
+    MapPair* destinoPair = map_search(r->lugares, destino);
 
+    if (origenPair == NULL || destinoPair == NULL) {
+        printf("\nOrigen o destino no encontrados en la red.\n");
+        return;
+    }
+
+    MapPair* pair = map_first(r->lugares);
+    while (pair != NULL) {
+        lugar* l = (lugar*) pair->value;
+        l->distancia = 999999999; 
+        l->visitado = 0;
+        strcpy(l->anterior, "");
+        pair = map_next(r->lugares);
+    }
+
+    lugar* inicio = (lugar*) origenPair->value;
+    inicio->distancia = 0;
+
+    Heap* colaPrio = heap_create();
+    heap_push(colaPrio, inicio, 0);
+
+    // Algoritmo de Dijkstra usando costo como peso
+    while (heap_top(colaPrio) != NULL) {
+        lugar* actual = (lugar*) heap_top(colaPrio);
+        heap_pop(colaPrio);
+
+        if (actual->visitado) continue;
+        actual->visitado = 1;
+
+        conexion* c = (conexion*) list_first(actual->conexiones);
+        while (c != NULL) {
+            MapPair* vecinoPair = map_search(r->lugares, c->destino);
+            if (vecinoPair != NULL) {
+                lugar* vecino = (lugar*) vecinoPair->value;
+                int nuevaDist = actual->distancia + c->costo;
+
+                if (nuevaDist < vecino->distancia) {
+                    vecino->distancia = nuevaDist;
+                    strcpy(vecino->anterior, actual->nombre);
+                    heap_push(colaPrio, vecino, nuevaDist);
+                }
+            }
+            c = (conexion*) list_next(actual->conexiones);
+        }
+    }
+
+    lugar* fin = (lugar*) destinoPair->value;
+    if (fin->distancia >= 999999999) {
+        printf("\nNo existe ruta disponible.\n");
+        return;
+    }
+
+    Stack* ruta = stack_create(NULL);
+    char actualNombre[30];
+    strcpy(actualNombre, destino);
+
+    while (strlen(actualNombre) > 0) {
+        char* copia = (char*) malloc(30);
+        strcpy(copia, actualNombre);
+        stack_push(ruta, copia);
+
+        MapPair* p = map_search(r->lugares, actualNombre);
+        lugar* l = (lugar*) p->value;
+        strcpy(actualNombre, l->anterior);
+    }
+
+    printf("\n===== RUTA MÁS ECONÓMICA =====\n");
+    char* anterior = NULL;
+    int tiempoTotal = 0, costoTotal = 0;
+
+    while (stack_top(ruta) != NULL) {
+        char* nombre = (char*) stack_top(ruta);
+        printf("%s", nombre);
+
+        if (anterior != NULL) {
+            MapPair* pair = map_search(r->lugares, anterior);
+            lugar* l = (lugar*) pair->value;
+            conexion* c = (conexion*) list_first(l->conexiones);
+
+            while (c != NULL) {
+                if (strcmp(c->destino, nombre) == 0) {
+                    tiempoTotal += c->tiempo;
+                    costoTotal += c->costo;
+                    break;
+                }
+                c = (conexion*) list_next(l->conexiones);
+            }
+        }
+
+        anterior = nombre;
+        stack_pop(ruta);
+
+        if (stack_top(ruta) != NULL) printf(" -> ");
+    }
+
+    printf("\n\nTiempo total: %d minutos\n", tiempoTotal);
+    printf("Costo total: $%d\n", costoTotal);
 }
 
 void busquedaEquilibrada (red* r, char* origen, char* destino, double alpha)
